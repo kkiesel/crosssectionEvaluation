@@ -20,7 +20,8 @@ for fname in glob.glob("crab_*/results/cmsRun_*.log.tar.gz*"):
         out[dSet].append( (vals[0], vals[2]) )
 
 
+print "# dataset    cross section (pb)    uncertainty (pb)"
 sortedOut = collections.OrderedDict(sorted(out.items(), key=lambda t:t[0]))
 for k,v in sortedOut.iteritems():
     for x in v:
-        print k, x[0], x[1]
+        print "{:<60}".format(k), float(x[0]), float(x[1])
