@@ -4,10 +4,11 @@ import glob
 import tarfile
 import collections
 
+path = "done/crab_*/results/cmsRun_*.log.tar.gz*"
 
 out = {}
-for fname in glob.glob("crab_*/results/cmsRun_*.log.tar.gz*"):
-    dSet = fname.split("/")[0][5:]
+for fname in glob.glob(path):
+    dSet = fname.split("/")[-3][5:]
     f = tarfile.open(fname)
     for member in f.getmembers():
         if "stdout" not in member.name: continue
